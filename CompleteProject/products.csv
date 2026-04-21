@@ -1,0 +1,51 @@
+product_id,name,category,unit_cost,supplier_id
+1,Laptop,Electronics,28.12,3
+2,Smartphone,Electronics,41.96,8
+3,Tablet,Electronics,12.72,3
+4,Headphones,Electronics,61.13,1
+5,Smart Watch,Electronics,31.32,7
+6,Wireless Mouse,Electronics,61.64,8
+7,Keyboard,Electronics,31.64,7
+8,Monitor,Electronics,79.58,6
+9,Printer,Electronics,68.34,7
+10,Router,Electronics,60.17,10
+11,External Hard Drive,Electronics,42.66,9
+12,USB Flash Drive,Electronics,46.64,4
+13,Bluetooth Speaker,Electronics,62.37,6
+14,Webcam,Electronics,45.19,2
+15,Graphics Card,Electronics,84.7,4
+16,Power Bank,Electronics,69.74,2
+17,Phone Case,Electronics,94.98,10
+18,Screen Protector,Electronics,20.24,10
+19,Cable Organizer,Electronics,86.05,6
+20,Gaming Console,Electronics,41.89,1
+21,T-Shirt,Clothing,37.3,2
+22,Jeans,Clothing,16.89,10
+23,Jacket,Clothing,23.13,7
+24,Sneakers,Clothing,34.22,9
+25,Dress,Clothing,31.54,8
+26,Sweater,Clothing,61.83,4
+27,Hat,Clothing,77.54,6
+28,Socks,Clothing,59.55,2
+29,Gloves,Clothing,90.24,8
+30,Scarf,Clothing,63.24,10
+31,Pants,Clothing,22.21,2
+32,Shirt,Clothing,46.66,3
+33,Coat,Clothing,74.06,3
+34,Boots,Clothing,19.45,1
+35,Sandals,Clothing,44.14,7
+36,Belt,Clothing,76.94,5
+37,Tie,Clothing,60.9,3
+38,Underwear,Clothing,72.19,7
+39,Bra,Clothing,48.48,10
+40,Shorts,Clothing,51.28,6
+41,Rice,Food,76.67,4
+42,Milk,Food,40.38,2
+43,Bread,Food,20.85,6
+44,Apples,Food,19.29,6
+45,Bananas,Food,10.69,3
+46,Chicken,Food,18.28,10
+47,Beef,Food,36.53,9
+48,Eggs,Food,37.46,4
+49,Cheese,Food,27.23,2
+50,Yogurt,Food,78.16,10

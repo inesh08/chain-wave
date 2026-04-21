@@ -1,0 +1,11 @@
+supplier_id,name,contact,lead_time_days
+1,Supplier 1,contact1@supplier.com,1
+2,Supplier 2,contact2@supplier.com,2
+3,Supplier 3,contact3@supplier.com,9
+4,Supplier 4,contact4@supplier.com,5
+5,Supplier 5,contact5@supplier.com,12
+6,Supplier 6,contact6@supplier.com,2
+7,Supplier 7,contact7@supplier.com,9
+8,Supplier 8,contact8@supplier.com,5
+9,Supplier 9,contact9@supplier.com,9
+10,Supplier 10,contact10@supplier.com,8
