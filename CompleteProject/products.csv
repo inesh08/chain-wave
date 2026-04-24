@@ -1,51 +1,601 @@
 product_id,name,category,unit_cost,supplier_id
-1,Laptop,Electronics,28.12,3
-2,Smartphone,Electronics,41.96,8
-3,Tablet,Electronics,12.72,3
-4,Headphones,Electronics,61.13,1
-5,Smart Watch,Electronics,31.32,7
-6,Wireless Mouse,Electronics,61.64,8
-7,Keyboard,Electronics,31.64,7
-8,Monitor,Electronics,79.58,6
-9,Printer,Electronics,68.34,7
-10,Router,Electronics,60.17,10
-11,External Hard Drive,Electronics,42.66,9
-12,USB Flash Drive,Electronics,46.64,4
-13,Bluetooth Speaker,Electronics,62.37,6
-14,Webcam,Electronics,45.19,2
-15,Graphics Card,Electronics,84.7,4
-16,Power Bank,Electronics,69.74,2
-17,Phone Case,Electronics,94.98,10
-18,Screen Protector,Electronics,20.24,10
-19,Cable Organizer,Electronics,86.05,6
-20,Gaming Console,Electronics,41.89,1
-21,T-Shirt,Clothing,37.3,2
-22,Jeans,Clothing,16.89,10
-23,Jacket,Clothing,23.13,7
-24,Sneakers,Clothing,34.22,9
-25,Dress,Clothing,31.54,8
-26,Sweater,Clothing,61.83,4
-27,Hat,Clothing,77.54,6
-28,Socks,Clothing,59.55,2
-29,Gloves,Clothing,90.24,8
-30,Scarf,Clothing,63.24,10
-31,Pants,Clothing,22.21,2
-32,Shirt,Clothing,46.66,3
-33,Coat,Clothing,74.06,3
-34,Boots,Clothing,19.45,1
-35,Sandals,Clothing,44.14,7
-36,Belt,Clothing,76.94,5
-37,Tie,Clothing,60.9,3
-38,Underwear,Clothing,72.19,7
-39,Bra,Clothing,48.48,10
-40,Shorts,Clothing,51.28,6
-41,Rice,Food,76.67,4
-42,Milk,Food,40.38,2
-43,Bread,Food,20.85,6
-44,Apples,Food,19.29,6
-45,Bananas,Food,10.69,3
-46,Chicken,Food,18.28,10
-47,Beef,Food,36.53,9
-48,Eggs,Food,37.46,4
-49,Cheese,Food,27.23,2
-50,Yogurt,Food,78.16,10
+1,Laptop,Electronics,70.79,5
+2,Smartphone,Electronics,68.56,4
+3,Tablet,Electronics,84.71,2
+4,Headphones,Electronics,58.14,3
+5,Smart Watch,Electronics,65.18,1
+6,Wireless Mouse,Electronics,75.64,10
+7,Keyboard,Electronics,11.73,1
+8,Monitor,Electronics,17.64,5
+9,Printer,Electronics,10.35,5
+10,Router,Electronics,35.29,6
+11,External Hard Drive,Electronics,74.94,5
+12,USB Flash Drive,Electronics,71.91,3
+13,Bluetooth Speaker,Electronics,56.69,5
+14,Webcam,Electronics,80.66,1
+15,Graphics Card,Electronics,48.62,3
+16,Power Bank,Electronics,26.13,2
+17,Phone Case,Electronics,55.85,8
+18,Screen Protector,Electronics,64.51,3
+19,Cable Organizer,Electronics,88.85,6
+20,Gaming Console,Electronics,72.54,4
+21,Laptop v2,Electronics,73.1,8
+22,Smartphone v2,Electronics,53.22,4
+23,Tablet v2,Electronics,95.0,5
+24,Headphones v2,Electronics,33.04,1
+25,Smart Watch v2,Electronics,45.95,1
+26,Wireless Mouse v2,Electronics,44.89,3
+27,Keyboard v2,Electronics,71.63,8
+28,Monitor v2,Electronics,18.41,5
+29,Printer v2,Electronics,57.31,6
+30,Router v2,Electronics,25.12,3
+31,External Hard Drive v2,Electronics,43.24,5
+32,USB Flash Drive v2,Electronics,35.09,6
+33,Bluetooth Speaker v2,Electronics,94.48,5
+34,Webcam v2,Electronics,66.34,3
+35,Graphics Card v2,Electronics,87.43,7
+36,Power Bank v2,Electronics,51.31,9
+37,Phone Case v2,Electronics,76.46,1
+38,Screen Protector v2,Electronics,20.66,7
+39,Cable Organizer v2,Electronics,88.59,7
+40,Gaming Console v2,Electronics,99.14,4
+41,Laptop v3,Electronics,66.13,3
+42,Smartphone v3,Electronics,63.29,10
+43,Tablet v3,Electronics,75.69,7
+44,Headphones v3,Electronics,50.79,6
+45,Smart Watch v3,Electronics,37.2,6
+46,Wireless Mouse v3,Electronics,20.88,5
+47,Keyboard v3,Electronics,36.79,5
+48,Monitor v3,Electronics,65.83,2
+49,Printer v3,Electronics,40.23,3
+50,Router v3,Electronics,76.54,4
+51,External Hard Drive v3,Electronics,77.98,8
+52,USB Flash Drive v3,Electronics,41.82,9
+53,Bluetooth Speaker v3,Electronics,18.59,7
+54,Webcam v3,Electronics,83.89,6
+55,Graphics Card v3,Electronics,49.26,6
+56,Power Bank v3,Electronics,45.67,3
+57,Phone Case v3,Electronics,11.3,2
+58,Screen Protector v3,Electronics,24.49,9
+59,Cable Organizer v3,Electronics,98.31,9
+60,Gaming Console v3,Electronics,66.57,1
+61,Laptop v4,Electronics,48.16,9
+62,Smartphone v4,Electronics,34.61,9
+63,Tablet v4,Electronics,83.35,1
+64,Headphones v4,Electronics,69.52,7
+65,Smart Watch v4,Electronics,65.03,6
+66,Wireless Mouse v4,Electronics,10.16,4
+67,Keyboard v4,Electronics,12.36,7
+68,Monitor v4,Electronics,36.39,2
+69,Printer v4,Electronics,39.99,9
+70,Router v4,Electronics,33.07,6
+71,External Hard Drive v4,Electronics,79.89,3
+72,USB Flash Drive v4,Electronics,28.1,10
+73,Bluetooth Speaker v4,Electronics,34.27,1
+74,Webcam v4,Electronics,13.25,6
+75,Graphics Card v4,Electronics,61.31,9
+76,Power Bank v4,Electronics,83.78,4
+77,Phone Case v4,Electronics,35.64,10
+78,Screen Protector v4,Electronics,81.25,8
+79,Cable Organizer v4,Electronics,46.14,9
+80,Gaming Console v4,Electronics,52.43,2
+81,Laptop v5,Electronics,35.98,6
+82,Smartphone v5,Electronics,50.87,10
+83,Tablet v5,Electronics,63.75,1
+84,Headphones v5,Electronics,64.28,4
+85,Smart Watch v5,Electronics,24.07,1
+86,Wireless Mouse v5,Electronics,96.25,1
+87,Keyboard v5,Electronics,56.14,4
+88,Monitor v5,Electronics,79.18,2
+89,Printer v5,Electronics,83.49,7
+90,Router v5,Electronics,56.33,10
+91,External Hard Drive v5,Electronics,14.44,6
+92,USB Flash Drive v5,Electronics,23.77,5
+93,Bluetooth Speaker v5,Electronics,94.49,4
+94,Webcam v5,Electronics,49.07,6
+95,Graphics Card v5,Electronics,19.56,1
+96,Power Bank v5,Electronics,64.08,1
+97,Phone Case v5,Electronics,11.7,4
+98,Screen Protector v5,Electronics,29.23,6
+99,Cable Organizer v5,Electronics,30.72,9
+100,Gaming Console v5,Electronics,67.26,5
+101,Laptop v6,Electronics,16.32,7
+102,Smartphone v6,Electronics,72.84,1
+103,Tablet v6,Electronics,77.65,6
+104,Headphones v6,Electronics,22.88,1
+105,Smart Watch v6,Electronics,54.67,5
+106,Wireless Mouse v6,Electronics,10.55,9
+107,Keyboard v6,Electronics,10.53,4
+108,Monitor v6,Electronics,57.77,3
+109,Printer v6,Electronics,12.65,4
+110,Router v6,Electronics,21.71,2
+111,External Hard Drive v6,Electronics,40.29,9
+112,USB Flash Drive v6,Electronics,42.84,3
+113,Bluetooth Speaker v6,Electronics,15.66,7
+114,Webcam v6,Electronics,29.62,5
+115,Graphics Card v6,Electronics,52.27,10
+116,Power Bank v6,Electronics,21.31,9
+117,Phone Case v6,Electronics,43.48,1
+118,Screen Protector v6,Electronics,42.63,2
+119,Cable Organizer v6,Electronics,83.19,2
+120,Gaming Console v6,Electronics,92.3,6
+121,Laptop v7,Electronics,47.52,10
+122,Smartphone v7,Electronics,42.88,1
+123,Tablet v7,Electronics,93.62,3
+124,Headphones v7,Electronics,99.04,7
+125,Smart Watch v7,Electronics,45.3,4
+126,Wireless Mouse v7,Electronics,15.62,2
+127,Keyboard v7,Electronics,22.99,10
+128,Monitor v7,Electronics,72.22,8
+129,Printer v7,Electronics,73.79,6
+130,Router v7,Electronics,76.57,3
+131,External Hard Drive v7,Electronics,73.83,9
+132,USB Flash Drive v7,Electronics,68.22,9
+133,Bluetooth Speaker v7,Electronics,39.02,2
+134,Webcam v7,Electronics,14.97,9
+135,Graphics Card v7,Electronics,61.95,10
+136,Power Bank v7,Electronics,66.33,1
+137,Phone Case v7,Electronics,92.87,8
+138,Screen Protector v7,Electronics,92.81,9
+139,Cable Organizer v7,Electronics,14.76,8
+140,Gaming Console v7,Electronics,67.25,8
+141,Laptop v8,Electronics,20.74,3
+142,Smartphone v8,Electronics,15.21,4
+143,Tablet v8,Electronics,86.27,2
+144,Headphones v8,Electronics,73.28,9
+145,Smart Watch v8,Electronics,86.78,5
+146,Wireless Mouse v8,Electronics,40.12,4
+147,Keyboard v8,Electronics,50.18,10
+148,Monitor v8,Electronics,17.87,1
+149,Printer v8,Electronics,50.67,3
+150,Router v8,Electronics,63.64,2
+151,T-Shirt,Clothing,78.07,7
+152,Jeans,Clothing,52.99,2
+153,Jacket,Clothing,52.97,3
+154,Sneakers,Clothing,79.87,8
+155,Dress,Clothing,94.11,9
+156,Sweater,Clothing,68.59,6
+157,Hat,Clothing,31.02,2
+158,Socks,Clothing,65.51,3
+159,Gloves,Clothing,34.66,4
+160,Scarf,Clothing,73.23,7
+161,Pants,Clothing,40.56,9
+162,Shirt,Clothing,43.54,4
+163,Coat,Clothing,27.15,6
+164,Boots,Clothing,38.88,1
+165,Sandals,Clothing,13.76,10
+166,Belt,Clothing,53.46,5
+167,Tie,Clothing,75.02,8
+168,Underwear,Clothing,37.89,3
+169,Bra,Clothing,47.42,7
+170,Shorts,Clothing,84.3,10
+171,T-Shirt v2,Clothing,20.93,3
+172,Jeans v2,Clothing,68.08,3
+173,Jacket v2,Clothing,51.96,3
+174,Sneakers v2,Clothing,18.88,3
+175,Dress v2,Clothing,77.09,6
+176,Sweater v2,Clothing,92.15,6
+177,Hat v2,Clothing,29.01,9
+178,Socks v2,Clothing,40.87,8
+179,Gloves v2,Clothing,74.75,6
+180,Scarf v2,Clothing,63.18,7
+181,Pants v2,Clothing,23.98,9
+182,Shirt v2,Clothing,19.4,9
+183,Coat v2,Clothing,86.49,4
+184,Boots v2,Clothing,60.24,4
+185,Sandals v2,Clothing,42.27,9
+186,Belt v2,Clothing,49.54,9
+187,Tie v2,Clothing,76.74,5
+188,Underwear v2,Clothing,12.96,5
+189,Bra v2,Clothing,70.13,3
+190,Shorts v2,Clothing,79.97,5
+191,T-Shirt v3,Clothing,82.68,5
+192,Jeans v3,Clothing,76.71,1
+193,Jacket v3,Clothing,71.8,1
+194,Sneakers v3,Clothing,69.49,10
+195,Dress v3,Clothing,99.13,1
+196,Sweater v3,Clothing,82.11,5
+197,Hat v3,Clothing,59.28,1
+198,Socks v3,Clothing,29.05,10
+199,Gloves v3,Clothing,26.14,6
+200,Scarf v3,Clothing,97.2,4
+201,Pants v3,Clothing,33.07,2
+202,Shirt v3,Clothing,33.79,6
+203,Coat v3,Clothing,44.77,9
+204,Boots v3,Clothing,75.87,10
+205,Sandals v3,Clothing,87.25,6
+206,Belt v3,Clothing,88.07,10
+207,Tie v3,Clothing,26.53,3
+208,Underwear v3,Clothing,14.78,8
+209,Bra v3,Clothing,54.58,2
+210,Shorts v3,Clothing,62.28,4
+211,T-Shirt v4,Clothing,29.59,1
+212,Jeans v4,Clothing,83.48,6
+213,Jacket v4,Clothing,79.11,1
+214,Sneakers v4,Clothing,94.19,8
+215,Dress v4,Clothing,21.69,10
+216,Sweater v4,Clothing,18.01,8
+217,Hat v4,Clothing,77.33,7
+218,Socks v4,Clothing,90.55,9
+219,Gloves v4,Clothing,48.4,7
+220,Scarf v4,Clothing,46.5,2
+221,Pants v4,Clothing,46.61,4
+222,Shirt v4,Clothing,11.04,4
+223,Coat v4,Clothing,24.26,7
+224,Boots v4,Clothing,83.6,1
+225,Sandals v4,Clothing,60.94,10
+226,Belt v4,Clothing,38.94,2
+227,Tie v4,Clothing,56.8,10
+228,Underwear v4,Clothing,81.25,8
+229,Bra v4,Clothing,22.0,1
+230,Shorts v4,Clothing,40.22,10
+231,T-Shirt v5,Clothing,99.54,6
+232,Jeans v5,Clothing,63.82,9
+233,Jacket v5,Clothing,64.3,3
+234,Sneakers v5,Clothing,59.65,9
+235,Dress v5,Clothing,55.17,6
+236,Sweater v5,Clothing,48.32,1
+237,Hat v5,Clothing,89.42,5
+238,Socks v5,Clothing,44.09,1
+239,Gloves v5,Clothing,97.62,2
+240,Scarf v5,Clothing,79.82,9
+241,Pants v5,Clothing,62.74,8
+242,Shirt v5,Clothing,60.61,9
+243,Coat v5,Clothing,33.37,8
+244,Boots v5,Clothing,61.63,2
+245,Sandals v5,Clothing,28.32,8
+246,Belt v5,Clothing,38.69,1
+247,Tie v5,Clothing,14.44,5
+248,Underwear v5,Clothing,59.98,7
+249,Bra v5,Clothing,36.5,2
+250,Shorts v5,Clothing,12.77,10
+251,T-Shirt v6,Clothing,28.07,9
+252,Jeans v6,Clothing,86.94,1
+253,Jacket v6,Clothing,15.25,3
+254,Sneakers v6,Clothing,16.56,1
+255,Dress v6,Clothing,39.13,1
+256,Sweater v6,Clothing,97.35,1
+257,Hat v6,Clothing,17.01,6
+258,Socks v6,Clothing,26.45,4
+259,Gloves v6,Clothing,56.12,7
+260,Scarf v6,Clothing,18.2,2
+261,Pants v6,Clothing,84.45,2
+262,Shirt v6,Clothing,46.8,9
+263,Coat v6,Clothing,57.95,9
+264,Boots v6,Clothing,73.69,5
+265,Sandals v6,Clothing,67.07,6
+266,Belt v6,Clothing,32.86,3
+267,Tie v6,Clothing,23.82,10
+268,Underwear v6,Clothing,57.02,5
+269,Bra v6,Clothing,72.73,6
+270,Shorts v6,Clothing,10.69,4
+271,T-Shirt v7,Clothing,95.2,10
+272,Jeans v7,Clothing,41.01,5
+273,Jacket v7,Clothing,53.06,1
+274,Sneakers v7,Clothing,96.37,1
+275,Dress v7,Clothing,57.97,8
+276,Sweater v7,Clothing,78.64,7
+277,Hat v7,Clothing,45.41,1
+278,Socks v7,Clothing,90.98,9
+279,Gloves v7,Clothing,94.49,9
+280,Scarf v7,Clothing,50.11,5
+281,Pants v7,Clothing,98.25,6
+282,Shirt v7,Clothing,69.83,4
+283,Coat v7,Clothing,84.73,10
+284,Boots v7,Clothing,61.63,6
+285,Sandals v7,Clothing,34.44,10
+286,Belt v7,Clothing,77.69,5
+287,Tie v7,Clothing,96.98,2
+288,Underwear v7,Clothing,94.32,1
+289,Bra v7,Clothing,39.41,1
+290,Shorts v7,Clothing,38.11,7
+291,T-Shirt v8,Clothing,99.72,3
+292,Jeans v8,Clothing,11.5,10
+293,Jacket v8,Clothing,96.97,3
+294,Sneakers v8,Clothing,55.48,4
+295,Dress v8,Clothing,97.88,9
+296,Sweater v8,Clothing,87.68,4
+297,Hat v8,Clothing,31.84,9
+298,Socks v8,Clothing,43.94,7
+299,Gloves v8,Clothing,49.88,8
+300,Scarf v8,Clothing,37.1,5
+301,Rice,Food,82.99,6
+302,Milk,Food,92.43,6
+303,Bread,Food,29.42,9
+304,Apples,Food,13.72,9
+305,Bananas,Food,84.78,8
+306,Chicken,Food,77.69,3
+307,Beef,Food,14.56,10
+308,Eggs,Food,96.17,2
+309,Cheese,Food,92.99,6
+310,Yogurt,Food,86.1,10
+311,Pasta,Food,10.38,10
+312,Tomatoes,Food,34.07,8
+313,Potatoes,Food,67.04,1
+314,Onions,Food,55.93,9
+315,Carrots,Food,52.84,7
+316,Orange Juice,Food,29.75,9
+317,Coffee,Food,47.56,2
+318,Tea,Food,29.0,4
+319,Sugar,Food,90.34,7
+320,Salt,Food,43.36,1
+321,Rice v2,Food,18.64,3
+322,Milk v2,Food,11.98,5
+323,Bread v2,Food,76.81,6
+324,Apples v2,Food,79.36,8
+325,Bananas v2,Food,42.36,4
+326,Chicken v2,Food,99.45,2
+327,Beef v2,Food,61.63,5
+328,Eggs v2,Food,58.3,7
+329,Cheese v2,Food,46.46,9
+330,Yogurt v2,Food,50.8,10
+331,Pasta v2,Food,53.72,3
+332,Tomatoes v2,Food,98.66,5
+333,Potatoes v2,Food,79.06,5
+334,Onions v2,Food,64.01,7
+335,Carrots v2,Food,42.81,5
+336,Orange Juice v2,Food,47.74,2
+337,Coffee v2,Food,49.77,2
+338,Tea v2,Food,11.32,8
+339,Sugar v2,Food,92.83,5
+340,Salt v2,Food,43.11,9
+341,Rice v3,Food,23.02,9
+342,Milk v3,Food,74.65,2
+343,Bread v3,Food,25.77,2
+344,Apples v3,Food,88.1,5
+345,Bananas v3,Food,43.46,6
+346,Chicken v3,Food,26.76,2
+347,Beef v3,Food,42.05,1
+348,Eggs v3,Food,53.02,5
+349,Cheese v3,Food,52.41,2
+350,Yogurt v3,Food,34.14,9
+351,Pasta v3,Food,11.64,5
+352,Tomatoes v3,Food,78.41,10
+353,Potatoes v3,Food,64.49,1
+354,Onions v3,Food,86.12,10
+355,Carrots v3,Food,66.04,3
+356,Orange Juice v3,Food,20.33,9
+357,Coffee v3,Food,63.48,3
+358,Tea v3,Food,44.07,6
+359,Sugar v3,Food,36.51,10
+360,Salt v3,Food,91.14,2
+361,Rice v4,Food,92.13,3
+362,Milk v4,Food,72.89,8
+363,Bread v4,Food,67.03,1
+364,Apples v4,Food,11.38,8
+365,Bananas v4,Food,98.35,5
+366,Chicken v4,Food,17.64,6
+367,Beef v4,Food,58.97,10
+368,Eggs v4,Food,34.71,10
+369,Cheese v4,Food,25.61,7
+370,Yogurt v4,Food,46.02,10
+371,Pasta v4,Food,47.07,1
+372,Tomatoes v4,Food,94.35,3
+373,Potatoes v4,Food,36.77,4
+374,Onions v4,Food,83.79,10
+375,Carrots v4,Food,87.01,10
+376,Orange Juice v4,Food,73.98,3
+377,Coffee v4,Food,94.55,6
+378,Tea v4,Food,25.91,6
+379,Sugar v4,Food,31.84,4
+380,Salt v4,Food,36.34,1
+381,Rice v5,Food,90.74,6
+382,Milk v5,Food,59.57,4
+383,Bread v5,Food,22.31,7
+384,Apples v5,Food,20.5,4
+385,Bananas v5,Food,33.18,5
+386,Chicken v5,Food,11.87,6
+387,Beef v5,Food,15.03,10
+388,Eggs v5,Food,49.36,9
+389,Cheese v5,Food,36.8,7
+390,Yogurt v5,Food,85.18,3
+391,Pasta v5,Food,33.94,2
+392,Tomatoes v5,Food,15.75,3
+393,Potatoes v5,Food,73.01,5
+394,Onions v5,Food,80.86,4
+395,Carrots v5,Food,98.59,10
+396,Orange Juice v5,Food,51.53,7
+397,Coffee v5,Food,82.61,1
+398,Tea v5,Food,30.58,2
+399,Sugar v5,Food,35.75,9
+400,Salt v5,Food,75.65,5
+401,Rice v6,Food,73.77,2
+402,Milk v6,Food,62.39,1
+403,Bread v6,Food,32.89,10
+404,Apples v6,Food,59.37,8
+405,Bananas v6,Food,81.22,10
+406,Chicken v6,Food,55.04,8
+407,Beef v6,Food,53.54,4
+408,Eggs v6,Food,17.1,4
+409,Cheese v6,Food,25.58,5
+410,Yogurt v6,Food,72.44,7
+411,Pasta v6,Food,89.97,9
+412,Tomatoes v6,Food,10.31,5
+413,Potatoes v6,Food,95.91,9
+414,Onions v6,Food,83.22,5
+415,Carrots v6,Food,41.95,4
+416,Orange Juice v6,Food,46.1,4
+417,Coffee v6,Food,32.48,9
+418,Tea v6,Food,78.28,6
+419,Sugar v6,Food,74.29,10
+420,Salt v6,Food,37.86,10
+421,Rice v7,Food,86.96,3
+422,Milk v7,Food,20.71,10
+423,Bread v7,Food,23.52,5
+424,Apples v7,Food,83.78,2
+425,Bananas v7,Food,10.52,9
+426,Chicken v7,Food,98.18,7
+427,Beef v7,Food,79.86,7
+428,Eggs v7,Food,34.17,1
+429,Cheese v7,Food,83.14,8
+430,Yogurt v7,Food,76.66,1
+431,Pasta v7,Food,69.63,1
+432,Tomatoes v7,Food,23.08,2
+433,Potatoes v7,Food,59.29,9
+434,Onions v7,Food,36.01,5
+435,Carrots v7,Food,76.0,1
+436,Orange Juice v7,Food,56.34,9
+437,Coffee v7,Food,91.51,3
+438,Tea v7,Food,96.32,5
+439,Sugar v7,Food,65.31,6
+440,Salt v7,Food,64.91,4
+441,Rice v8,Food,26.44,10
+442,Milk v8,Food,95.81,10
+443,Bread v8,Food,57.7,7
+444,Apples v8,Food,17.59,9
+445,Bananas v8,Food,62.5,10
+446,Chicken v8,Food,59.95,1
+447,Beef v8,Food,61.85,5
+448,Eggs v8,Food,93.66,7
+449,Cheese v8,Food,11.17,2
+450,Yogurt v8,Food,83.46,6
+451,Chair,Furniture,27.7,10
+452,Table,Furniture,42.8,10
+453,Sofa,Furniture,42.27,5
+454,Desk,Furniture,62.56,3
+455,Bookshelf,Furniture,35.55,1
+456,Bed,Furniture,88.03,8
+457,Nightstand,Furniture,89.99,5
+458,Dresser,Furniture,65.07,1
+459,Cabinet,Furniture,21.17,7
+460,Lamp,Furniture,78.54,10
+461,Ottoman,Furniture,65.31,4
+462,Rug,Furniture,72.82,8
+463,Curtains,Furniture,90.8,6
+464,Mirror,Furniture,42.9,6
+465,Clock,Furniture,96.03,1
+466,Vase,Furniture,10.76,4
+467,Picture Frame,Furniture,54.34,6
+468,Coat Rack,Furniture,51.02,8
+469,Bar Stool,Furniture,60.21,2
+470,Bean Bag,Furniture,28.45,9
+471,Chair v2,Furniture,85.17,7
+472,Table v2,Furniture,80.59,10
+473,Sofa v2,Furniture,51.2,8
+474,Desk v2,Furniture,98.8,6
+475,Bookshelf v2,Furniture,54.7,9
+476,Bed v2,Furniture,30.2,9
+477,Nightstand v2,Furniture,12.76,6
+478,Dresser v2,Furniture,26.62,5
+479,Cabinet v2,Furniture,80.03,3
+480,Lamp v2,Furniture,99.87,6
+481,Ottoman v2,Furniture,24.76,2
+482,Rug v2,Furniture,28.3,9
+483,Curtains v2,Furniture,86.06,5
+484,Mirror v2,Furniture,74.51,2
+485,Clock v2,Furniture,70.63,10
+486,Vase v2,Furniture,58.4,7
+487,Picture Frame v2,Furniture,72.67,8
+488,Coat Rack v2,Furniture,10.95,8
+489,Bar Stool v2,Furniture,22.33,10
+490,Bean Bag v2,Furniture,24.17,9
+491,Chair v3,Furniture,43.3,10
+492,Table v3,Furniture,16.9,10
+493,Sofa v3,Furniture,71.34,10
+494,Desk v3,Furniture,44.01,5
+495,Bookshelf v3,Furniture,42.56,1
+496,Bed v3,Furniture,14.08,1
+497,Nightstand v3,Furniture,99.84,2
+498,Dresser v3,Furniture,39.18,5
+499,Cabinet v3,Furniture,99.41,8
+500,Lamp v3,Furniture,86.14,5
+501,Ottoman v3,Furniture,40.19,4
+502,Rug v3,Furniture,76.91,6
+503,Curtains v3,Furniture,81.28,8
+504,Mirror v3,Furniture,48.23,8
+505,Clock v3,Furniture,68.6,4
+506,Vase v3,Furniture,95.35,4
+507,Picture Frame v3,Furniture,83.45,2
+508,Coat Rack v3,Furniture,11.64,9
+509,Bar Stool v3,Furniture,20.2,3
+510,Bean Bag v3,Furniture,90.54,2
+511,Chair v4,Furniture,57.6,3
+512,Table v4,Furniture,61.0,9
+513,Sofa v4,Furniture,47.48,3
+514,Desk v4,Furniture,28.1,6
+515,Bookshelf v4,Furniture,93.46,3
+516,Bed v4,Furniture,64.52,10
+517,Nightstand v4,Furniture,63.37,10
+518,Dresser v4,Furniture,23.45,9
+519,Cabinet v4,Furniture,95.77,2
+520,Lamp v4,Furniture,20.57,8
+521,Ottoman v4,Furniture,41.77,6
+522,Rug v4,Furniture,32.8,9
+523,Curtains v4,Furniture,23.59,9
+524,Mirror v4,Furniture,79.58,6
+525,Clock v4,Furniture,32.77,2
+526,Vase v4,Furniture,41.23,4
+527,Picture Frame v4,Furniture,69.33,10
+528,Coat Rack v4,Furniture,30.99,4
+529,Bar Stool v4,Furniture,91.6,1
+530,Bean Bag v4,Furniture,11.34,3
+531,Chair v5,Furniture,90.6,10
+532,Table v5,Furniture,29.94,2
+533,Sofa v5,Furniture,34.56,2
+534,Desk v5,Furniture,17.99,4
+535,Bookshelf v5,Furniture,52.76,8
+536,Bed v5,Furniture,31.42,1
+537,Nightstand v5,Furniture,91.21,4
+538,Dresser v5,Furniture,81.34,3
+539,Cabinet v5,Furniture,92.13,9
+540,Lamp v5,Furniture,58.16,10
+541,Ottoman v5,Furniture,33.42,4
+542,Rug v5,Furniture,88.88,2
+543,Curtains v5,Furniture,95.86,5
+544,Mirror v5,Furniture,37.62,7
+545,Clock v5,Furniture,24.0,2
+546,Vase v5,Furniture,24.17,7
+547,Picture Frame v5,Furniture,15.08,4
+548,Coat Rack v5,Furniture,29.86,9
+549,Bar Stool v5,Furniture,37.5,9
+550,Bean Bag v5,Furniture,53.74,6
+551,Chair v6,Furniture,19.41,4
+552,Table v6,Furniture,76.72,7
+553,Sofa v6,Furniture,95.1,8
+554,Desk v6,Furniture,42.03,2
+555,Bookshelf v6,Furniture,72.41,10
+556,Bed v6,Furniture,48.1,8
+557,Nightstand v6,Furniture,68.68,4
+558,Dresser v6,Furniture,39.88,9
+559,Cabinet v6,Furniture,76.12,1
+560,Lamp v6,Furniture,19.9,4
+561,Ottoman v6,Furniture,28.22,7
+562,Rug v6,Furniture,95.49,2
+563,Curtains v6,Furniture,97.44,9
+564,Mirror v6,Furniture,70.0,10
+565,Clock v6,Furniture,56.83,5
+566,Vase v6,Furniture,57.4,10
+567,Picture Frame v6,Furniture,26.23,5
+568,Coat Rack v6,Furniture,18.34,10
+569,Bar Stool v6,Furniture,50.31,5
+570,Bean Bag v6,Furniture,87.04,9
+571,Chair v7,Furniture,42.11,6
+572,Table v7,Furniture,64.54,4
+573,Sofa v7,Furniture,47.77,7
+574,Desk v7,Furniture,41.28,3
+575,Bookshelf v7,Furniture,16.44,8
+576,Bed v7,Furniture,30.39,4
+577,Nightstand v7,Furniture,12.87,8
+578,Dresser v7,Furniture,71.39,1
+579,Cabinet v7,Furniture,59.91,3
+580,Lamp v7,Furniture,22.2,2
+581,Ottoman v7,Furniture,15.06,10
+582,Rug v7,Furniture,24.45,6
+583,Curtains v7,Furniture,78.76,1
+584,Mirror v7,Furniture,41.74,1
+585,Clock v7,Furniture,39.57,4
+586,Vase v7,Furniture,58.15,7
+587,Picture Frame v7,Furniture,84.52,1
+588,Coat Rack v7,Furniture,59.15,2
+589,Bar Stool v7,Furniture,50.94,6
+590,Bean Bag v7,Furniture,26.13,8
+591,Chair v8,Furniture,40.37,8
+592,Table v8,Furniture,11.04,1
+593,Sofa v8,Furniture,40.85,5
+594,Desk v8,Furniture,97.3,10
+595,Bookshelf v8,Furniture,81.4,1
+596,Bed v8,Furniture,34.95,1
+597,Nightstand v8,Furniture,17.55,7
+598,Dresser v8,Furniture,97.84,8
+599,Cabinet v8,Furniture,75.95,2
+600,Lamp v8,Furniture,40.55,8

@@ -32,77 +32,86 @@ furniture_names = [
     'Ottoman', 'Rug', 'Curtains', 'Mirror', 'Clock', 'Vase', 'Picture Frame', 'Coat Rack', 'Bar Stool', 'Bean Bag'
 ]
 
-# Create products with proper names
-product_names = electronics_names + clothing_names + food_names + furniture_names
-categories = (['Electronics'] * len(electronics_names) + 
-              ['Clothing'] * len(clothing_names) + 
-              ['Food'] * len(food_names) + 
-              ['Furniture'] * len(furniture_names))
+# Dynamic Product Generation (150 per category)
+NUM_PER_CATEGORY = 150
+product_names = []
+categories = []
 
-# Take first 50
-product_names = product_names[:50]
-categories = categories[:50]
+for cat, base_names in [('Electronics', electronics_names), ('Clothing', clothing_names), ('Food', food_names), ('Furniture', furniture_names)]:
+    for i in range(NUM_PER_CATEGORY):
+        base_name = base_names[i % len(base_names)]
+        suffix = f" v{i // len(base_names) + 1}" if i >= len(base_names) else ""
+        product_names.append(f"{base_name}{suffix}")
+        categories.append(cat)
+
+TOTAL_PRODUCTS = len(product_names)
 
 products = pd.DataFrame({
-    'product_id': range(1, 51),
+    'product_id': range(1, TOTAL_PRODUCTS + 1),
     'name': product_names,
     'category': categories,
-    'unit_cost': np.random.uniform(10, 100, 50).round(2),
-    'supplier_id': np.random.randint(1, 11, 50)
+    'unit_cost': np.random.uniform(10, 100, TOTAL_PRODUCTS).round(2),
+    'supplier_id': np.random.randint(1, 11, TOTAL_PRODUCTS)
 })
 
 # Warehouses
+NUM_WAREHOUSES = 5
 warehouses = pd.DataFrame({
-    'warehouse_id': range(1, 6),
-    'name': [f'Warehouse {i}' for i in range(1, 6)],
+    'warehouse_id': range(1, NUM_WAREHOUSES + 1),
+    'name': [f'Warehouse {i}' for i in range(1, NUM_WAREHOUSES + 1)],
     'location': ['NY', 'CA', 'TX', 'FL', 'IL'],
-    'capacity': np.random.randint(1000, 5000, 5)
+    'capacity': np.random.randint(1000, 5000, NUM_WAREHOUSES)
 })
 
 # Inventory
+NUM_INVENTORY = TOTAL_PRODUCTS * NUM_WAREHOUSES
 inventory = pd.DataFrame({
-    'inventory_id': range(1, 251),
-    'product_id': np.tile(range(1, 51), 5),
-    'warehouse_id': np.repeat(range(1, 6), 50),
-    'current_stock': np.random.randint(10, 200, 250),
-    'safety_stock': np.random.randint(5, 50, 250),
-    'last_updated': pd.date_range('2023-01-01', periods=250, freq='D')[:250]
+    'inventory_id': range(1, NUM_INVENTORY + 1),
+    'product_id': np.tile(range(1, TOTAL_PRODUCTS + 1), NUM_WAREHOUSES),
+    'warehouse_id': np.repeat(range(1, NUM_WAREHOUSES + 1), TOTAL_PRODUCTS),
+    'current_stock': np.random.randint(10, 200, NUM_INVENTORY),
+    'safety_stock': np.random.randint(5, 50, NUM_INVENTORY),
+    'last_updated': np.random.choice(pd.date_range('2023-01-01', periods=365, freq='D'), NUM_INVENTORY)
 })
 
 # Orders
+NUM_ORDERS = 2000
 orders = pd.DataFrame({
-    'order_id': range(1, 1001),
-    'product_id': np.random.randint(1, 51, 1000),
-    'warehouse_id': np.random.randint(1, 6, 1000),
-    'quantity': np.random.randint(1, 20, 1000),
-    'order_date': pd.date_range('2023-01-01', periods=1000, freq='D')[:1000],
-    'status': np.random.choice(['Pending', 'Fulfilled', 'Delayed'], 1000)
+    'order_id': range(1, NUM_ORDERS + 1),
+    'product_id': np.random.randint(1, TOTAL_PRODUCTS + 1, NUM_ORDERS),
+    'warehouse_id': np.random.randint(1, NUM_WAREHOUSES + 1, NUM_ORDERS),
+    'quantity': np.random.randint(1, 20, NUM_ORDERS),
+    'order_date': np.random.choice(pd.date_range('2023-01-01', periods=365, freq='D'), NUM_ORDERS),
+    'status': np.random.choice(['Pending', 'Fulfilled', 'Delayed'], NUM_ORDERS)
 })
 
 # Suppliers
+NUM_SUPPLIERS = 10
 suppliers = pd.DataFrame({
-    'supplier_id': range(1, 11),
-    'name': [f'Supplier {i}' for i in range(1, 11)],
-    'contact': [f'contact{i}@supplier.com' for i in range(1, 11)],
-    'lead_time_days': np.random.randint(1, 14, 10)
+    'supplier_id': range(1, NUM_SUPPLIERS + 1),
+    'name': [f'Supplier {i}' for i in range(1, NUM_SUPPLIERS + 1)],
+    'contact': [f'contact{i}@supplier.com' for i in range(1, NUM_SUPPLIERS + 1)],
+    'lead_time_days': np.random.randint(1, 14, NUM_SUPPLIERS)
 })
 
 # Demand Forecast
+NUM_FORECASTS = TOTAL_PRODUCTS * 3
 demand_forecast = pd.DataFrame({
-    'forecast_id': range(1, 151),
-    'product_id': np.tile(range(1, 51), 3)[:150],
-    'forecast_date': pd.date_range('2023-01-01', periods=150, freq='M')[:150],
-    'predicted_demand': np.random.randint(50, 200, 150),
-    'confidence_level': np.random.uniform(0.8, 0.95, 150).round(2)
+    'forecast_id': range(1, NUM_FORECASTS + 1),
+    'product_id': np.tile(range(1, TOTAL_PRODUCTS + 1), 3),
+    'forecast_date': np.repeat(pd.date_range('2023-01-01', periods=3, freq='MS'), TOTAL_PRODUCTS),
+    'predicted_demand': np.random.randint(50, 200, NUM_FORECASTS),
+    'confidence_level': np.random.uniform(0.8, 0.95, NUM_FORECASTS).round(2)
 })
 
 # Costs
+NUM_COSTS = 1000
 costs = pd.DataFrame({
-    'cost_id': range(1, 201),
-    'product_id': np.random.randint(1, 51, 200),
-    'cost_type': np.random.choice(['Storage', 'Stockout', 'Transportation'], 200),
-    'amount': np.random.uniform(5, 50, 200).round(2),
-    'date': pd.date_range('2023-01-01', periods=200, freq='D')[:200]
+    'cost_id': range(1, NUM_COSTS + 1),
+    'product_id': np.random.randint(1, TOTAL_PRODUCTS + 1, NUM_COSTS),
+    'cost_type': np.random.choice(['Storage', 'Stockout', 'Transportation'], NUM_COSTS),
+    'amount': np.random.uniform(5, 50, NUM_COSTS).round(2),
+    'date': np.random.choice(pd.date_range('2023-01-01', periods=365, freq='D'), NUM_COSTS)
 })
 
 # Save to CSV

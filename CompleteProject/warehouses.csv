@@ -1,6 +1,6 @@
 warehouse_id,name,location,capacity
-1,Warehouse 1,NY,2521
-2,Warehouse 2,CA,4269
-3,Warehouse 3,TX,4487
-4,Warehouse 4,FL,4101
-5,Warehouse 5,IL,2228
+1,Warehouse 1,NY,3966
+2,Warehouse 2,CA,3599
+3,Warehouse 3,TX,2176
+4,Warehouse 4,FL,1489
+5,Warehouse 5,IL,2782

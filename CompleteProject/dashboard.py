@@ -60,7 +60,7 @@ app = dash.Dash(__name__, suppress_callback_exceptions=True, assets_folder='asse
 
 app.layout = html.Div([
     html.Div([
-        html.H1('🏭 SCM Centralized Monitoring Dashboard'),
+        html.H1('⛓️ ChainWave - SCM Centralized Monitoring Dashboard'),
         html.P('Real-time Supply Chain Analytics & Insights', style={'margin': '10px 0', 'opacity': '0.8'})
     ], className='header'),
     dcc.Tabs(id='tabs', value='executive', className='tabs', children=[
@@ -73,7 +73,7 @@ app.layout = html.Div([
     ]),
     html.Div(id='tab-content'),
     html.Div([
-        html.P('© 2026 SCM Project | Built with Dash & Python'),
+        html.P('© 2026 ChainWave | Supply Chain Management Platform | Built with Dash & Python'),
     ], className='footer')
 ])
 
@@ -120,24 +120,17 @@ def render_content(tab):
         return html.Div([
             html.H2('📦 Inventory Monitoring'),
             html.Div([
-                dcc.Dropdown(id='warehouse-filter', options=[{'label': w, 'value': w} for w in warehouses_df['name']], value=warehouses_df['name'].iloc[0], className='dropdown'),
-                dcc.Dropdown(id='category-filter', options=[{'label': c, 'value': c} for c in products_df['category'].unique()], value=products_df['category'].unique()[0], className='dropdown'),
-            ], className='filter-container'),
+                dcc.Dropdown(id='warehouse-filter', options=[{'label': w, 'value': w} for w in warehouses_df['name']], value=warehouses_df['name'].iloc[0], className='dropdown', style={'flex': '1'}),
+                dcc.Dropdown(id='category-filter', options=[{'label': 'All Categories', 'value': 'All'}] + [{'label': c, 'value': c} for c in products_df['category'].unique()], value='All', className='dropdown', style={'flex': '1'}),
+                dcc.Dropdown(id='product-search', options=[{'label': p, 'value': p} for p in products_df['name']], placeholder="Search for an item (e.g. Laptop)...", searchable=True, clearable=True, className='dropdown', style={'flex': '2'}),
+            ], className='filter-container', style={'display': 'flex', 'gap': '10px', 'marginBottom': '20px'}),
             html.Div([
                 dcc.Graph(id='inventory-chart')
             ], className='chart-container'),
             html.Div([
                 html.Table([
-                    html.Thead(html.Tr([html.Th('Product'), html.Th('Current Stock'), html.Th('Safety Stock'), html.Th('Status')])),
-                    html.Tbody([
-                        html.Tr([
-                            html.Td(row['name_x']),
-                            html.Td(row['current_stock']),
-                            html.Td(row['safety_stock']),
-                            html.Td('Low Stock', className='status-low') if row['current_stock'] < row['safety_stock'] else html.Td('OK', className='status-ok')
-                        ])
-                        for _, row in inventory_merged.head(10).iterrows()
-                    ])
+                    html.Thead(html.Tr([html.Th('Product'), html.Th('Category'), html.Th('Current Stock'), html.Th('Safety Stock'), html.Th('Status')])),
+                    html.Tbody(id='inventory-table-body')
                 ])
             ], className='table-container')
         ])
@@ -178,11 +171,14 @@ def render_content(tab):
             # Demand by Product - Separate graphs with better spacing
             html.Div([
                 dcc.Graph(
-                    figure=px.line(demand_with_products, x='forecast_date', y='predicted_demand',
-                                  facet_col='name', facet_col_wrap=3,
-                                  title='Demand Forecasting of Products',
-                                  markers=True, color_discrete_sequence=px.colors.qualitative.Set3,
-                                  height=3500, facet_row_spacing=0.02)
+                    figure=px.line(
+                        demand_with_products[demand_with_products['name'].isin(demand_with_products['name'].unique()[:30])], 
+                        x='forecast_date', y='predicted_demand',
+                        facet_col='name', facet_col_wrap=3,
+                        title='Demand Forecasting of Products (Top 30)',
+                        markers=True, color_discrete_sequence=px.colors.qualitative.Set3,
+                        height=3500, facet_row_spacing=0.02
+                    )
                 )
             ], className='chart-container'),
             
@@ -236,10 +232,36 @@ def render_content(tab):
             ], className='table-container')
         ])
 
-@app.callback(Output('inventory-chart', 'figure'), Input('warehouse-filter', 'value'), Input('category-filter', 'value'))
-def update_inventory_chart(warehouse, category):
-    df = inventory_merged[(inventory_merged['name_y'] == warehouse) & (inventory_merged['category'] == category)]
-    return px.bar(df, x='name_x', y='current_stock', title=f'Inventory in {warehouse} for {category}')
+@app.callback(
+    [Output('inventory-chart', 'figure'), Output('inventory-table-body', 'children')],
+    [Input('warehouse-filter', 'value'), Input('category-filter', 'value'), Input('product-search', 'value')]
+)
+def update_inventory_chart(warehouse, category, product):
+    df = inventory_merged[inventory_merged['name_y'] == warehouse]
+    
+    if product:
+        df = df[df['name_x'] == product]
+        title = f'Inventory in {warehouse} for {product}'
+    else:
+        if category != 'All':
+            df = df[df['category'] == category]
+        title = f'Inventory in {warehouse} for {category if category != "All" else "All Categories"}'
+    
+    fig = px.bar(df, x='name_x', y='current_stock', title=title)
+    
+    table_rows = []
+    for _, row in df.head(50).iterrows():
+        status_class = 'status-low' if row['current_stock'] < row['safety_stock'] else 'status-ok'
+        status_text = 'Low Stock' if row['current_stock'] < row['safety_stock'] else 'OK'
+        table_rows.append(html.Tr([
+            html.Td(row['name_x']),
+            html.Td(row['category']),
+            html.Td(row['current_stock']),
+            html.Td(row['safety_stock']),
+            html.Td(status_text, className=status_class)
+        ]))
+        
+    return fig, table_rows
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8050)
