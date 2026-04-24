@@ -1,62 +1,79 @@
-# SCM Centralized Monitoring Project (P5)
+Chain-Wave 🌊
+Chain-Wave is a data-driven Supply Chain Management (SCM) dashboard designed to provide end-to-end visibility into logistics, inventory, and demand forecasting. By centralizing data from suppliers to warehouses, Chain-Wave helps businesses optimize their operations and reduce supply chain volatility.
 
-This project addresses the need for centralized monitoring in supply chain management to prevent stockouts, excess inventory, and high costs.
+🚀 Features
+Inventory Management: Real-time tracking of stock levels across multiple warehouses.
 
-## Project Structure
-- **Phase1/**: Problem analysis and data architecture
-- **Phase2/**: Data generation scripts and CSV files
-- **Phase3/**: Machine learning models
-- **Phase4/**: Dashboard application
-- **Phase5/**: Final report
-- **CompleteProject/**: Integrated complete solution
+Supplier Tracking: Maintain a centralized database of suppliers and procurement sources.
 
-## Technology Used
-- **Python**: Core programming language
-- **Dash/Plotly**: Interactive web dashboard
-- **Pandas**: Data manipulation
-- **Scikit-learn**: Machine learning models
-- **PostgreSQL**: Database (designed, CSV for demo)
-- **Jupyter**: Data analysis (optional)
+Demand Forecasting: Analytical tools to predict future stock requirements and minimize the "bullwhip effect."
 
-## How to Run the Project
-1. **Install Dependencies**:
-   ```
-   pip install -r requirements.txt
-   ```
+Cost Analysis: Integrated tracking of logistics and operational costs.
 
-2. **Generate Data**:
-   ```
-   cd Phase2
-   python generate_data.py
-   ```
+Order Tracking: Monitor the lifecycle of orders from placement to delivery.
 
-3. **Run ML Models**:
-   ```
-   cd ../Phase3
-   python demand_prediction.py
-   python anomaly_detection.py
-   ```
+🛠️ Tech Stack
+Database: MySQL (Relational data modeling for products, suppliers, and orders)
 
-4. **Launch Dashboard**:
-   ```
-   cd ../CompleteProject
-   python dashboard.py
-   ```
-   Open http://localhost:8050 in browser
+Backend: Python (or your preferred language)
 
-## Dashboard Screenshots
-[Insert screenshots of each dashboard tab here]
+Frontend: (Add your frontend tech here, e.g., React, Streamlit, or HTML/CSS)
 
-## Features
-- 6 interactive dashboard tabs
-- Real-time KPIs and metrics
-- ML-powered demand forecasting
-- Anomaly detection for excess inventory
-- Drill-down filters by warehouse and category
-- Responsive design
+📊 Database Schema
+The project utilizes a relational database named scm_dashboard with the following core tables:
 
-## Submission
-- Report: Compile Phase5/report.md into PDF as SCM22CS_P5_XXX-XXX-XXX.pdf
-- Presentation: 10-minute demo of the dashboard
+products: Detailed catalog of items.
 
-Deadline: April 20, 2026
+suppliers: Information on vendors and partners.
+
+inventory: Current stock counts and locations.
+
+orders: Record of all customer and supply transactions.
+
+warehouses: Physical storage locations and capacities.
+
+costs & demand_forecast: Analytical tables for financial and predictive insights.
+
+⚙️ Getting Started
+Prerequisites
+
+MySQL Server
+
+Python 3.x (if applicable)
+
+Installation & Setup
+
+Clone the repository:
+
+Bash
+git clone https://github.com/inesh08/chain-wave.git
+cd chain-wave
+Set up the Database:
+Login to your MySQL terminal and create the schema:
+
+SQL
+CREATE DATABASE scm_dashboard;
+USE scm_dashboard;
+-- Import your schema file
+SOURCE database/schema.sql;
+Run the Application:
+(Replace with your specific run command)
+
+Bash
+python app.py
+📖 Usage
+To view current inventory levels directly via the terminal:
+
+SQL
+USE scm_dashboard;
+SELECT * FROM inventory LIMIT 10;
+🛡️ License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+💡 Tips for your README:
+
+Add a Screenshot: If you have a UI, replace the placeholder text with an actual image of your dashboard.
+
+Architecture: Since you've been researching Zero Trust Architecture, you might want to add a section on "Security" if you implemented any specific access controls for the database.
+
+Project Goal: If this is for your 6th-semester coursework at PES University, mentioning the academic context or the specific problem you are solving (like reducing supply chain delays) adds great value to the "About" section.
