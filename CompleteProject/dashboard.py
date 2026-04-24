@@ -1,5 +1,5 @@
 import dash
-from dash import html, dcc, Input, Output, State
+from dash import html, dcc, Input, Output, State, ALL, MATCH, callback_context
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -60,7 +60,7 @@ app = dash.Dash(__name__, suppress_callback_exceptions=True, assets_folder='asse
 
 app.layout = html.Div([
     html.Div([
-        html.H1('⛓️ ChainWave - SCM Centralized Monitoring Dashboard'),
+        html.Img(src=app.get_asset_url('logo.png'), style={'height': '150px', 'display': 'block', 'margin': '0 auto', 'marginBottom': '15px'}),
         html.P('Real-time Supply Chain Analytics & Insights', style={'margin': '10px 0', 'opacity': '0.8'})
     ], className='header'),
     dcc.Tabs(id='tabs', value='executive', className='tabs', children=[
@@ -154,8 +154,68 @@ def render_content(tab):
         # Merge demand forecast with products to get categories and names
         demand_with_products = demand_forecast_df.merge(products_df, on='product_id')
         
+        # Calculate Category-wise Suggestions
+        cat_stock = inventory_df.merge(products_df[['product_id', 'category']], on='product_id')
+        cat_stock = cat_stock.groupby('category').agg({'current_stock': 'sum', 'safety_stock': 'sum'}).reset_index()
+        
+        num_months = demand_forecast_df['forecast_date'].nunique() or 1
+        cat_demand = demand_forecast_df.merge(products_df[['product_id', 'category']], on='product_id')
+        cat_demand = cat_demand.groupby('category')['predicted_demand'].sum().reset_index()
+        cat_demand['avg_monthly_demand'] = cat_demand['predicted_demand'] / num_months
+        
+        suggestions_df = cat_stock.merge(cat_demand, on='category')
+        
+        recommendation_cards = []
+        for _, row in suggestions_df.iterrows():
+            stock = row['current_stock']
+            safety_stock = row['safety_stock']
+            demand = row['avg_monthly_demand']
+            category = row['category']
+            
+            if stock < safety_stock:
+                suggestion = "Critical - Below Safety Stock"
+                color_class = "status-low"
+                icon = "🚨"
+            elif stock < 0.8 * demand:
+                suggestion = "Low Stock - Restock Soon"
+                color_class = "status-low"
+                icon = "📦"
+            elif stock < 1.1 * demand:
+                suggestion = "Plan Restock - Low Buffer"
+                color_class = "status-warning"
+                icon = "⚠️"
+            elif stock > 1.8 * demand:
+                suggestion = "Overstocked - Consider Sale"
+                color_class = "status-info"
+                icon = "💰"
+            else:
+                suggestion = "Healthy Inventory Level"
+                color_class = "status-ok"
+                icon = "✅"
+                
+            recommendation_cards.append(html.Div([
+                html.H4(f"{icon} {category}", style={'marginTop': '0'}),
+                html.P([html.Strong("Action: "), html.Span(suggestion, className=color_class)]),
+                html.Div([
+                    html.P(f"Stock: {stock:,.0f}", style={'margin': '5px 0', 'fontSize': '0.9em'}),
+                    html.P(f"Demand: {demand:,.0f}", style={'margin': '5px 0', 'fontSize': '0.9em'}),
+                ], style={'display': 'flex', 'justifyContent': 'space-between', 'borderTop': '1px solid #eee', 'paddingTop': '10px'}),
+                html.P("Click for product details →", style={'fontSize': '0.8em', 'color': '#007bff', 'marginTop': '10px', 'textAlign': 'right'})
+            ], 
+            id={'type': 'category-card', 'index': category},
+            n_clicks=0,
+            className='kpi-card', 
+            style={'textAlign': 'left', 'minWidth': '280px', 'cursor': 'pointer'}))
+
         return html.Div([
             html.H2('📈 Demand Forecasting'),
+            
+            # Inventory Suggestions Section
+            html.Div([
+                html.H3('Inventory Suggestions', style={'marginBottom': '20px'}),
+                html.Div(recommendation_cards, className='kpi-container', style={'justifyContent': 'flex-start'}),
+                html.Div(id='product-suggestions-container', style={'marginTop': '20px'})
+            ], className='chart-container'),
             
             # Demand by Category - Separate graphs with better spacing
             html.Div([
@@ -262,6 +322,74 @@ def update_inventory_chart(warehouse, category, product):
         ]))
         
     return fig, table_rows
+
+@app.callback(
+    Output('product-suggestions-container', 'children'),
+    [Input({'type': 'category-card', 'index': ALL}, 'n_clicks')],
+    [State({'type': 'category-card', 'index': ALL}, 'id')]
+)
+def display_product_suggestions(n_clicks, ids):
+    ctx = dash.callback_context
+    if not ctx.triggered or not any(n_clicks):
+        return html.Div("Click on a category card above to see product-level predictions.", style={'color': '#6c757d', 'fontStyle': 'italic', 'textAlign': 'center', 'padding': '20px', 'background': '#f8f9fa', 'borderRadius': '10px', 'border': '1px dashed #ccc'})
+
+    # Get the index of the clicked card
+    clicked_prop_id = ctx.triggered[0]['prop_id']
+    if 'index' not in clicked_prop_id:
+        return dash.no_update
+        
+    import json
+    clicked_id_str = clicked_prop_id.split('.')[0]
+    clicked_index = json.loads(clicked_id_str)['index']
+
+    # Filter data for this category
+    cat_products = products_df[products_df['category'] == clicked_index]
+    cat_inventory = inventory_df[inventory_df['product_id'].isin(cat_products['product_id'])]
+    
+    num_months = demand_forecast_df['forecast_date'].nunique() or 1
+    cat_demand = demand_forecast_df[demand_forecast_df['product_id'].isin(cat_products['product_id'])]
+    cat_demand_agg = cat_demand.groupby('product_id')['predicted_demand'].sum().reset_index()
+    cat_demand_agg['avg_monthly_demand'] = cat_demand_agg['predicted_demand'] / num_months
+    
+    # Merge for details
+    merged = cat_inventory.merge(cat_products, on='product_id').merge(cat_demand_agg, on='product_id')
+    
+    rows = []
+    for _, row in merged.head(20).iterrows():
+        stock = row['current_stock']
+        safety_stock = row['safety_stock']
+        demand = row['avg_monthly_demand']
+        
+        if stock < safety_stock:
+            suggestion, color_class = "Critical", "status-low"
+        elif stock < 0.8 * demand:
+            suggestion, color_class = "Restock", "status-low"
+        elif stock < 1.1 * demand:
+            suggestion, color_class = "Plan Restock", "status-warning"
+        elif stock > 1.8 * demand:
+            suggestion, color_class = "Overstock", "status-info"
+        else:
+            suggestion, color_class = "Healthy", "status-ok"
+            
+        rows.append(html.Tr([
+            html.Td(row['name']),
+            html.Td(f"{stock:,.0f}"),
+            html.Td(f"{demand:,.0f}"),
+            html.Td(suggestion, className=color_class)
+        ]))
+
+    return html.Div([
+        html.H4(f"📦 Product-Level Suggestions: {clicked_index}", style={'marginBottom': '15px', 'color': '#764ba2'}),
+        html.Table([
+            html.Thead(html.Tr([
+                html.Th("Product Name"),
+                html.Th("Stock"),
+                html.Th("Forecast"),
+                html.Th("Action")
+            ])),
+            html.Tbody(rows)
+        ])
+    ], className='table-container', style={'marginTop': '20px', 'borderTop': '2px solid #764ba2'})
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8050)

@@ -148,4 +148,14 @@ tr:hover {
     font-weight: bold;
 }
 
+.status-warning {
+    color: #fd7e14;
+    font-weight: bold;
+}
+
+.status-info {
+    color: #007bff;
+    font-weight: bold;
+}
+
 }
